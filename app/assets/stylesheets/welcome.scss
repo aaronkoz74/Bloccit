@@ -1,6 +1,6 @@
-h1 {
-  color: red;
-}
+//h1 {
+//  color: red;
+//}
 
 #index-title {
   text-align: center;
@@ -21,4 +21,17 @@ section {
   border-width: 5px;
   margin: 5px 5px 5px 5px;
   padding: 5px 5px 5px 5px;
+}
+
+.social-btn {
+  position: relative;
+  margin: auto;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: black;
+  background-color: #20b2aa;
+  height: 35px;
+  width: 100px;
+  text-align: center;
 }
