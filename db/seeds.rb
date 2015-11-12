@@ -25,6 +25,16 @@ posts = Post.all
   )
 end
 
+Post.find_or_create_by(
+  title: "Shorts Brewing",
+  body: "Makes delicious beer!"
+)
+
+Comment.find_or_create_by(
+  post: Post.find_by(title: "Shorts Brewing"),
+  body: "You should also check out Bells"
+)
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
