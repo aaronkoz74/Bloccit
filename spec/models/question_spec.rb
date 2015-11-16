@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-  let(:question) { Question.create! }
+  let(:question) { Question.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
   describe "attributes" do
     it "should respond to title" do
@@ -12,6 +12,10 @@ RSpec.describe Question, type: :model do
     end
     it "should respond to resolved" do
       expect(question).to respond_to(:resolved)
+    end
+
+    it "should be not be resolved by default" do
+      expect(question.resolved).to be(false)
     end
   end
 end

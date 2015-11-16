@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
 
     if @question.save
       flash[:notice] = "Question was saved."
-      redirect_to @question
+      redirect_to questions_path
     else
       flash[:error] = "There was an error saving the question. Please try again."
       render :new

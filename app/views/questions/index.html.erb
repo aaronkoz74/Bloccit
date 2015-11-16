@@ -5,7 +5,14 @@
     <div class="media-body">
       <h4 class="media-heading">
         <%= link_to question.title, question %>
+        <% if question.resolved %>
+          <i class="fa fa-check"></i>
+          resolved!
+        <% end %>
       </h4>
     </div>
   </div>
 <% end %>
+<div class="col-md-4">
+     <%= link_to "New Question", new_question_path, class: 'btn btn-success' %>
+</div>

@@ -3,7 +3,7 @@ include RandomData
 
 RSpec.describe QuestionsController, type: :controller do
 
-  let (:my_question) { Question.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false) }
+  let (:my_question) { Question.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -53,16 +53,16 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "POST create" do
     it "increases the number of Question by 1" do
-      expect{post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false}}.to change(Question,:count).by(1)
+      expect{post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Question,:count).by(1)
     end
 
     it "assigns the new question to @question" do
-      post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false}
+      post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
       expect(assigns(:question)).to eq Question.last
     end
 
     it "redirects to the new question" do
-      post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false}
+      post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
       expect(response).to redirect_to Question.last
     end
   end
