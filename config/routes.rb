@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :sponsored_posts, except: [:index]
   end
 
+  resources :users, only: [:new, :create]
+
   # get '/posts' => 'posts#index'
   # get '/posts/new' => 'posts#new'
   # get '/posts/:id' => 'posts#show'
