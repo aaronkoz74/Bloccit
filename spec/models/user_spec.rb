@@ -44,6 +44,20 @@ RSpec.describe User, type: :model do
     it "should be an invalid user due to incorrectly formatted email address" do
       expect(user_with_invalid_email_format).to_not be_valid
     end
-    
+
   end
+
+  describe "improperly-formatted user name" do
+    let(:user_with_invalid_name) { User.new(name: "inValIdformaT", email: "user@bloccit.com") }
+    let(:user_with_invalid_name_format) { User.new(name: "inValid forMat", email: "user@bloccit.com") }
+
+    it "should be an invalid user due to invalid format" do
+      expect(user_with_invalid_name).to_not be_valid
+    end
+
+    it "should be an invalid user due to incorrectly formatted name" do
+      expect(user_with_invalid_name).to_not be_valid
+    end
+  end
+
 end
