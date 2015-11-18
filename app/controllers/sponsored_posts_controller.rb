@@ -38,6 +38,8 @@ class SponsoredPostsController < ApplicationController
 
     if @sponsored_post.save
       flash[:notice] = "Post was updated."
+      # byebug
+      # '/topics/1/sponsored_posts/3'
       redirect_to [@sponsored_post.topic, @sponsored_post]
     else
       flash[:error] = "There was an error saving the post. Please try again."
