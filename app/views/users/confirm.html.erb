@@ -1,0 +1,17 @@
+<h2>Sign Up Confirmation</h2>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>Are you sure these values are correct?</h4>
+  </div>
+
+  <div class="col-md-8">
+    <h6>Email: <%= @user.email %> </h6>
+    <h6>Name: <%= @user.name %> </h6>
+  </div>
+
+  <div class="col-md-6">
+    <%= button_to "Yes", {:controller => "users", :action => "create", :params => params}, class: 'btn btn-success btn-lg' %>
+    <%= button_to "No", {:controller => "users", :action => "new", class: 'btn btn-primary btn-lg' } %>
+  </div>
+</div>
