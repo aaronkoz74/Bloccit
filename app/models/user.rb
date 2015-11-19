@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :posts
 
   before_save { self.email = email.downcase }
   # before_save { self.name = name.to_s.split.each { |name|
