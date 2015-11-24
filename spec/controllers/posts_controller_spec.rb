@@ -320,11 +320,6 @@ RSpec.describe PostsController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "renders the #edit view" do
-        get :edit, topic_id: my_topic.id, id: my_post.id
-        expect(response).to render_template :edit
-      end
-
       it "assigns post to be updated to @post" do
         get :edit, topic_id: my_topic.id, id: my_post.id
         post_instance = assigns(:post)

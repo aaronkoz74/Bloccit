@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_action :require_sign_in, except: [:index, :show]
   before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_admin, only: [:new, :create, :destroy]
 
   def index
     @topics = Topic.all
@@ -15,14 +16,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-    if current_user.moderator? == false
     @topic = Topic.new(topic_params)
-      if @topic.save
-        redirect_to @topic, notice: "Topic was saved successfully."
-      else
-        flash[:error] = "Error creating topic. Please try again."
-        render :new
-      end
+
+    if @topic.save
+      redirect_to @topic, notice: "Topic was saved successfully."
+    else
+      flash[:error] = "Error creating topic. Please try again."
+      render :new
     end
   end
 
@@ -44,16 +44,14 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    if current_user.moderator? == false
-      @topic = Topic.find(params[:id])
+    @topic = Topic.find(params[:id])
 
-      if @topic.destroy
-        flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
-        redirect_to action: :index
-      else
-        flash[:error] = "There was an error deleting the topic."
-        render :show
-      end
+    if @topic.destroy
+      flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
+      redirect_to action: :index
+    else
+      flash[:error] = "There was an error deleting the topic."
+      render :show
     end
   end
 
@@ -65,8 +63,18 @@ class TopicsController < ApplicationController
 
   def authorize_user
     unless current_user.admin? || current_user.moderator?
-      flash[:error] = "You must be an admin to do that."
-      redirect_to topics_path
+      error_redirect
     end
+  end
+
+  def authorize_admin
+    unless current_user.admin?
+      error_redirect
+    end
+  end
+
+  def error_redirect
+    flash[:error] = "You must be an admin to do that."
+    redirect_to topics_path
   end
 end

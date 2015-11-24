@@ -1,6 +1,6 @@
 <h1><%= @topic.name %></h1>
 
-<% if user_is_authorized_for_topics? && current_user.moderator? == true %>
+<% if user_is_authorized_as_topic_moderator? %>
   <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
 <% elsif user_is_authorized_for_topics? %>
   <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
