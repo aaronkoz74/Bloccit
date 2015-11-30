@@ -33,6 +33,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    # raise params.inspect
     @post = Post.find(params[:id])
     @post.assign_attributes(post_params)
 
@@ -62,7 +63,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :rating)
   end
 
   def authorize_user
