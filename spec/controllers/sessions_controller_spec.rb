@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  let(:my_user) { User.create!(name: "Blochead", email: "blochead@bloc.io", password: "password") }
+  let(:my_user) { create(:user) }
 
   describe "GET new" do
     it "returns http success" do
@@ -36,7 +36,7 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to render_template :new
     end
 
-    it "renders the #show view with valid email address" do
+    it "renders the #welcome view with valid email address" do
       post :create, session: {email: my_user.email, password: 'password'}
       expect(response).to redirect_to root_path
     end
