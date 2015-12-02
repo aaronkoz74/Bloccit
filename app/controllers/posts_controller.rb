@@ -37,9 +37,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.assign_attributes(post_params)
 
+    @post.labels = Label.update_labels(params[:post][:labels])
+    @post.rating = Rating.update_rating(params[:post][:rating])
+
     if @post.save
-      @post.labels = Label.update_labels(params[:post][:labels])
-      @post.rating = Rating.update_rating(params[:post][:rating])
       flash[:notice] = "Post was updated."
       redirect_to [@post.topic, @post]
     else
@@ -63,7 +64,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :rating)
+    params.require(:post).permit(:title, :body)
   end
 
   def authorize_user
