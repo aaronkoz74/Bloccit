@@ -3,9 +3,12 @@
   <div class="media-body">
     <h4 class="media-heading">
       <%= link_to post.title, topic_post_path(post.topic, post) %>
-          <div class="media-left">
-            <%= image_tag http://www.gravatar.com/avatar/32c943310a92faebe623b58fc2c6ae27?s=48&d=monsterid, class: 'media-object' %>
-          </div>
+      <% avatar_url = post.user.avatar_url(25) %>
+      <% if avatar_url %>
+        <div class="media-left">
+          <%= image_tag avatar_url, class: 'media-object' %>
+        </div>
+      <% end %>
       <%= render partial: "labels/list", locals: { labels: post.labels } %>
     </h4>
     <small>

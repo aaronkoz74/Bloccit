@@ -29,7 +29,6 @@
 
   <h2>Comments</h2>
   <%= render @user.comments %>
-
+  <% end %>
   <h2>Favorites</h2>
-  <%= render @user.favorite_posts %>
-<% end %>
+  <%= render partial: 'favorites/favorite_post', collection: @user.favorite_posts, as: :post %>
