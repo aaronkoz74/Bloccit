@@ -36,8 +36,13 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to render_template :new
     end
 
+    it "renders #new with bad password" do
+      post :create, session: {email: my_user.email, password: 'badpassword'}
+      expect(response).to render_template :new
+    end
+
     it "renders the #welcome view with valid email address" do
-      post :create, session: {email: my_user.email, password: 'password'}
+      post :create, session: {email: my_user.email, password: my_user.password}
       expect(response).to redirect_to root_path
     end
   end

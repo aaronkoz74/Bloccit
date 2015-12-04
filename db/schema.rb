@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130133658) do
+ActiveRecord::Schema.define(version: 20151203222057) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -58,20 +58,12 @@ ActiveRecord::Schema.define(version: 20151130133658) do
     t.datetime "updated_at", null: false
     t.integer  "topic_id"
     t.integer  "user_id"
-    t.integer  "rating"
+    t.integer  "rating_id"
     t.float    "rank"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "resolved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "severity"
@@ -85,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151130133658) do
     t.text     "description"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "rating"
+    t.integer  "rating_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,6 +87,7 @@ ActiveRecord::Schema.define(version: 20151130133658) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "role"
+    t.string   "auth_token"
   end
 
   create_table "votes", force: :cascade do |t|
