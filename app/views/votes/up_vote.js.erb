@@ -1,1 +1,4 @@
 $('#post_vote-<%= @post.id %>').html("<strong><%= @post.points %></strong>");
+$('#post_totalvote-<%= @post.id %>').html("<strong><%= pluralize(@post.points, 'point') %></strong>");
+$('#post_upvote-<%= @post.id %>').html("<strong><%= pluralize(@post.up_votes, 'up vote') %></strong>");
+$('#post_downvote-<%= @post.id %>').html("<strong><%= pluralize(@post.down_votes, 'down vote') %></strong>");

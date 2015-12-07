@@ -1,10 +1,10 @@
 <% if current_user %>
 <h3>
-  <div id="post_vote-<%= @post.id %>"><strong><%= pluralize(@post.points, 'point') %></strong></div><br/>
+  <div id="post_totalvote-<%= @post.id %>"><strong><%= pluralize(@post.points, 'point') %></strong></div><br/>
   <div>
     <small>
-      <div id="post_vote-<%= @post.id %>"><%= pluralize(@post.up_votes, 'up_vote') %></div> <br/>
-      <div id="post_vote-<%= @post.id %>"><%= pluralize(@post.down_votes, 'down_vote') %></div>
+      <div id="post_upvote-<%= @post.id %>"><%= pluralize(@post.up_votes, 'up_vote') %></div> <br/>
+      <div id="post_downvote-<%= @post.id %>"><%= pluralize(@post.down_votes, 'down_vote') %></div>
     </small>
   </div>
 </h3>
