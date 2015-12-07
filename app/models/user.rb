@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
   before_save { self.role ||= :member }
-  before_save :generate_auth_token
+  before_create :generate_auth_token
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
