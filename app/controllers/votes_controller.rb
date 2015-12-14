@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.js { render 'vote_count.js.erb' }
     end
   end
 
@@ -15,7 +15,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.js { render 'vote_count.js.erb' }
     end
   end
 
