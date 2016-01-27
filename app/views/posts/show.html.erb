@@ -49,4 +49,9 @@
       <%= render partial: 'favorites/favorite', locals: { post: @post } %>
     <% end %>
   </div>
+  <script>
+    $(function() {
+      blocmetrics.report("read");
+    });
+  </script>
 </div>
